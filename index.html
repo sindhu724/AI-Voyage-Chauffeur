@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Voyage Chauffeur</title>
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="voyage.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HERO SECTION
+         ========================= -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">SMART TRAVEL EXPLORER</p>
+
+            <h1>AI Voyage Chauffeur</h1>
+
+            <p>
+                Explore the New Seven Wonders of the World,
+                discover destination information, view locations on an
+                interactive map, save your favorites, and get travel assistance.
+            </p>
+        </div>
+    </header>
+
+
+    <!-- =========================
+         EXPLORER SECTION
+         ========================= -->
+    <main>
+
+        <section class="explorer-section">
+
+            <div class="section-heading">
+                <p class="section-label">EXPLORE</p>
+
+                <h2>New Seven Wonders of the World</h2>
+
+                <p>
+                    Select a destination to discover its history,
+                    highlights, travel information, and location.
+                </p>
+            </div>
+
+
+            <!-- Search -->
+            <div class="search-container">
+                <label for="searchInput" class="sr-only">
+                    Search destinations
+                </label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search a wonder or country..."
+                    autocomplete="off"
+                >
+            </div>
+
+
+            <!-- =========================
+                 WONDER CARDS
+                 ========================= -->
+            <div class="wonders">
+
+                <!-- Great Wall of China -->
+                <article class="wonder" data-key="greatWall">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('greatWall')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80"
+                            alt="Great Wall of China"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Great Wall of China</h3>
+
+                            <p class="wonder-location">
+                                China
+                            </p>
+
+                            <p>
+                                One of the world's most impressive
+                                architectural and defensive structures.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'greatWall')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+
+                <!-- Petra -->
+                <article class="wonder" data-key="petra">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('petra')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1548786811-dd6e453ccca7?auto=format&fit=crop&w=900&q=80"
+                            alt="Petra in Jordan"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Petra</h3>
+
+                            <p class="wonder-location">
+                                Jordan
+                            </p>
+
+                            <p>
+                                An ancient city famous for its
+                                rock-cut architecture and archaeological heritage.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'petra')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+
+                <!-- Colosseum -->
+                <article class="wonder" data-key="colosseum">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('colosseum')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=900&q=80"
+                            alt="Colosseum in Rome"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Colosseum</h3>
+
+                            <p class="wonder-location">
+                                Italy
+                            </p>
+
+                            <p>
+                                Rome's iconic ancient amphitheater
+                                and a major symbol of Roman history.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'colosseum')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+
+                <!-- Chichen Itza -->
+                <article class="wonder" data-key="chichenItza">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('chichenItza')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=900&q=80"
+                            alt="Chichen Itza"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Chichen Itza</h3>
+
+                            <p class="wonder-location">
+                                Mexico
+                            </p>
+
+                            <p>
+                                A remarkable ancient Maya city
+                                known for its monumental architecture.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'chichenItza')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+
+                <!-- Machu Picchu -->
+                <article class="wonder" data-key="machuPicchu">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('machuPicchu')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=900&q=80"
+                            alt="Machu Picchu"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Machu Picchu</h3>
+
+                            <p class="wonder-location">
+                                Peru
+                            </p>
+
+                            <p>
+                                A spectacular Inca citadel situated
+                                high in the Andes Mountains.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'machuPicchu')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+
+                <!-- Taj Mahal -->
+                <article class="wonder" data-key="tajMahal">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('tajMahal')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                            alt="Taj Mahal in India"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Taj Mahal</h3>
+
+                            <p class="wonder-location">
+                                India
+                            </p>
+
+                            <p>
+                                A world-famous monument renowned
+                                for its white marble architecture.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'tajMahal')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+
+                <!-- Christ the Redeemer -->
+                <article class="wonder" data-key="christRedeemer">
+
+                    <div
+                        class="wonder-card"
+                        onclick="showDetails('christRedeemer')"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=900&q=80"
+                            alt="Christ the Redeemer in Rio de Janeiro"
+                        >
+
+                        <div class="wonder-content">
+
+                            <h3>Christ the Redeemer</h3>
+
+                            <p class="wonder-location">
+                                Brazil
+                            </p>
+
+                            <p>
+                                An iconic statue overlooking
+                                Rio de Janeiro from Mount Corcovado.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <button
+                        class="favorite-button"
+                        onclick="toggleFavorite(event, 'christRedeemer')"
+                    >
+                        ☆ Favorite
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DESTINATION DETAILS
+             ========================= -->
+        <section id="details" class="details hidden">
+
+            <button
+                class="back-button"
+                onclick="hideDetails()"
+            >
+                ← Back to Wonders
+            </button>
+
+            <h2 id="wonderName"></h2>
+
+            <div id="wonderDescription"></div>
+
+            <!-- Map -->
+            <div class="map-section">
+
+                <h3>Destination Location</h3>
+
+                <div id="map"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TRAVEL ASSISTANT
+             ========================= -->
+        <section class="assistant-section">
+
+            <div class="assistant-header">
+
+                <p class="section-label">
+                    TRAVEL ASSISTANT
+                </p>
+
+                <h2>AI Travel Assistant</h2>
+
+                <p>
+                    Ask about the Seven Wonders, destinations,
+                    travel timing, trip duration, and travel tips.
+                </p>
+
+            </div>
+
+
+            <div class="chat-box">
+
+                <!-- Chat messages -->
+                <div
+                    id="chatMessages"
+                    class="chat-messages"
+                >
+
+                    <div class="message assistant-message">
+
+                        <strong>Voyage Assistant</strong>
+
+                        <p>
+                            Hello! Ask me about any of the New Seven Wonders,
+                            travel planning, or destination tips.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Suggested questions -->
+                <div class="suggested-questions">
+
+                    <button
+                        type="button"
+                        onclick="askSuggestedQuestion('Which wonder should I visit first?')"
+                    >
+                        Which wonder should I visit first?
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="askSuggestedQuestion('What is the best time to visit the Taj Mahal?')"
+                    >
+                        Best time to visit the Taj Mahal?
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="askSuggestedQuestion('Tell me about Machu Picchu')"
+                    >
+                        Tell me about Machu Picchu
+                    </button>
+
+                </div>
+
+
+                <!-- Chat input -->
+                <form
+                    id="chatForm"
+                    class="chat-input-area"
+                >
+
+                    <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="Ask your travel question..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit">
+                        Send
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+    <footer>
+
+        <p>
+            © 2026 AI Voyage Chauffeur
+        </p>
+
+        <p>
+            Explore. Discover. Travel.
+        </p>
+
+    </footer>
+
+
+    <!-- Leaflet Map JavaScript -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- Project JavaScript -->
+    <script src="voyage.js"></script>
+
+</body>
+</html>
